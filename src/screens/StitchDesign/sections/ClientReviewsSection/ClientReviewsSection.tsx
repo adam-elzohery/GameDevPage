@@ -1,5 +1,6 @@
 import React from "react";
 import { Card, CardContent } from "../../../../components/ui/card";
+/// <reference types="vite/client" />
 
 export const ClientReviewsSection = (): JSX.Element => {
   // Client testimonial data for mapping
@@ -9,21 +10,21 @@ export const ClientReviewsSection = (): JSX.Element => {
       name: "Sophia Clark",
       testimonial:
         "GameDev Studio exceeded our expectations with their innovative approach and dedication to quality. The game they developed for us is a huge success!",
-      imagePath: "..//depth-7--frame-0-6.png",
+      imagePath: `${import.meta.env.BASE_URL}depth-7--frame-0-6.png`,
     },
     {
       id: 2,
       name: "Liam Walker",
       testimonial:
         "We had a great experience working with GameDev Studio. Their team was professional and delivered a fantastic product within the agreed timeline.",
-      imagePath: "..//depth-7--frame-0-7.png",
+      imagePath: `${import.meta.env.BASE_URL}depth-7--frame-0-7.png`,
     },
     {
       id: 3,
       name: "Emma Davis",
       testimonial:
         "The team at GameDev Studio is incredibly talented and passionate about their work. They truly brought our vision to life.",
-      imagePath: "..//depth-7--frame-0-8.png",
+      imagePath: `${import.meta.env.BASE_URL}depth-7--frame-0-8.png`,
     },
   ];
 

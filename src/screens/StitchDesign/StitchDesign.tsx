@@ -8,13 +8,14 @@ import { ContactSection } from "./sections/ContactSection";
 import { LatestGamesSection } from "./sections/LatestGamesSection";
 import { OurTeamSection } from "./sections/OurTeamSection";
 import { SocialMediaSection } from "./sections/SocialMediaSection";
+/// <reference types="vite/client" />
 
 export const StitchDesign = (): JSX.Element => {
   // Social media images data
   const socialMediaImages = [
-    { id: 1, backgroundUrl: "..//depth-7--frame-0-3.png" },
-    { id: 2, backgroundUrl: "..//depth-7--frame-0-4.png" },
-    { id: 3, backgroundUrl: "..//depth-7--frame-0-5.png" },
+    { id: 1, backgroundUrl: `${import.meta.env.BASE_URL}depth-7--frame-0-3.png` },
+    { id: 2, backgroundUrl: `${import.meta.env.BASE_URL}depth-7--frame-0-4.png` },
+    { id: 3, backgroundUrl: `${import.meta.env.BASE_URL}depth-7--frame-0-5.png` },
   ];
 
   return (

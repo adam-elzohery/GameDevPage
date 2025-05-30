@@ -1,3 +1,5 @@
+/// <reference types="vite/client" />
+
 import React from "react";
 import { Avatar } from "../../../../components/ui/avatar";
 import { Button } from "../../../../components/ui/button";
@@ -24,7 +26,7 @@ export const AboutUsSection = (): JSX.Element => {
           <img
             className="absolute w-[13px] h-[13px] top-px left-px"
             alt="Logo"
-            src="/vector---0-1.svg"
+            src={`${import.meta.env.BASE_URL}vector---0-1.svg`}
           />
         </div>
         <h1 className="font-bold text-white text-lg font-['Spline_Sans',Helvetica]">
@@ -67,7 +69,7 @@ export const AboutUsSection = (): JSX.Element => {
             size="icon"
             className="h-10 w-10 bg-[#264433] rounded-[20px] p-2.5 border-0 hover:bg-[#264433] transition-none"
           >
-            <div className="w-full h-full bg-[url(/vector---0-4.svg)] bg-[100%_100%]" />
+            <div className="w-full h-full" style={{ backgroundImage: `url(${import.meta.env.BASE_URL}vector---0-4.svg)`, backgroundSize: '100% 100%' }} />
           </Button>
         </div>
 
@@ -79,7 +81,7 @@ export const AboutUsSection = (): JSX.Element => {
           className="w-10 h-10 rounded-[20px] border-0 bg-[#264433] hover:bg-[#264433]/90 transition-colors cursor-pointer"
           onClick={() => {}}
         >
-          <div className="w-full h-full bg-[url(/depth-4--frame-2.svg)] bg-cover bg-[50%_50%]" />
+          <div className="w-full h-full" style={{ backgroundImage: `url(${import.meta.env.BASE_URL}depth-4--frame-2.svg)`, backgroundSize: 'cover', backgroundPosition: '50% 50%' }} />
         </Button>
       </div>
     </header>

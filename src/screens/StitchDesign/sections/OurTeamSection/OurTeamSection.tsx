@@ -1,5 +1,6 @@
 import React from "react";
 import { Card, CardContent } from "../../../../components/ui/card";
+/// <reference types="vite/client" />
 
 export const OurTeamSection = (): JSX.Element => {
   // Team members data for easy mapping
@@ -8,19 +9,19 @@ export const OurTeamSection = (): JSX.Element => {
       id: 1,
       name: "Ethan Carter",
       role: "Lead Developer",
-      image: "..//depth-8--frame-0.png",
+      image: `${import.meta.env.BASE_URL}depth-8--frame-0.png`,
     },
     {
       id: 2,
       name: "Olivia Bennett",
       role: "Art Director",
-      image: "..//depth-8--frame-0-1.png",
+      image: `${import.meta.env.BASE_URL}depth-8--frame-0-1.png`,
     },
     {
       id: 3,
       name: "Noah Thompson",
       role: "Game Designer",
-      image: "..//depth-8--frame-0-2.png",
+      image: `${import.meta.env.BASE_URL}depth-8--frame-0-2.png`,
     },
   ];
 

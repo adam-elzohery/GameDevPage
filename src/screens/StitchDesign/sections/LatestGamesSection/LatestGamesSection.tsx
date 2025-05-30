@@ -1,5 +1,6 @@
 import React from "react";
 import { Button } from "../../../../components/ui/button";
+/// <reference types="vite/client" />
 
 export const LatestGamesSection = (): JSX.Element => {
   return (
@@ -10,7 +11,7 @@ export const LatestGamesSection = (): JSX.Element => {
             className="flex flex-col items-center justify-end h-[480px] w-full bg-cover bg-center text-center px-4"
             style={{
               backgroundImage:
-                "linear-gradient(90deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.4) 100%), url(..//depth-6--frame-0.png)",
+                `linear-gradient(90deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.4) 100%), url(${import.meta.env.BASE_URL}depth-6--frame-0.png)`,
             }}
           >
             <div className="max-w-3xl mx-auto mb-12 space-y-2">

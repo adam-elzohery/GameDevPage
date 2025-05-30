@@ -1,5 +1,6 @@
 import React from "react";
 import { Card, CardContent } from "../../../../components/ui/card";
+/// <reference types="vite/client" />
 
 export const SocialMediaSection = (): JSX.Element => {
   // Data for game cards to enable mapping
@@ -9,21 +10,21 @@ export const SocialMediaSection = (): JSX.Element => {
       title: "Realm of Legends",
       description:
         "Embark on an epic journey in a world of magic and mythical creatures.",
-      imageUrl: "..//depth-7--frame-0.png",
+      imageUrl: `${import.meta.env.BASE_URL}depth-7--frame-0.png`,
     },
     {
       id: 2,
       title: "Starfall Odyssey",
       description:
         "Explore the vastness of space in this thrilling sci-fi adventure.",
-      imageUrl: "..//depth-7--frame-0-1.png",
+      imageUrl: `${import.meta.env.BASE_URL}depth-7--frame-0-1.png`,
     },
     {
       id: 3,
       title: "Mystic Quest",
       description:
         "Uncover ancient secrets and solve puzzles in this captivating adventure game.",
-      imageUrl: "..//depth-7--frame-0-2.png",
+      imageUrl: `${import.meta.env.BASE_URL}depth-7--frame-0-2.png`,
     },
   ];
 
