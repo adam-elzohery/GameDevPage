@@ -2,9 +2,9 @@ import React from "react";
 import { Button } from "../../../../components/ui/button";
 /// <reference types="vite/client" />
 
-export const LatestGamesSection = (): JSX.Element => {
+export const LatestGamesSection = ({ id }: { id?: string }): JSX.Element => {
   return (
-    <section className="w-full">
+    <section id={id} className="w-full">
       <div className="p-4">
         <div className="w-full overflow-hidden rounded-xl">
           <div
@@ -24,7 +24,13 @@ export const LatestGamesSection = (): JSX.Element => {
                 titles and join us on our journey.
               </p>
               <div className="pt-4 md:pt-6">
-                <Button className="bg-[#38e07a] text-[#112116] hover:bg-[#38e07a]/90 rounded-3xl px-5 h-10 md:h-12 font-bold font-['Spline_Sans',Helvetica] transition-none">
+                <Button
+                  className="bg-[#38e07a] text-[#112116] hover:bg-[#38e07a]/90 rounded-3xl px-5 h-10 md:h-12 font-bold font-['Spline_Sans',Helvetica] transition-none"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    document.getElementById("latest-games")?.scrollIntoView({ behavior: "smooth" });
+                  }}
+                >
                   Explore Games
                 </Button>
               </div>

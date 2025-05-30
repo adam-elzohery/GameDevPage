@@ -1,6 +1,6 @@
 /// <reference types="vite/client" />
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Avatar } from "../../../../components/ui/avatar";
 import { Button } from "../../../../components/ui/button";
 import {
@@ -13,12 +13,15 @@ import { Menu, X } from "lucide-react";
 
 export const AboutUsSection = (): JSX.Element => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const lastScrollY = useRef(0);
+  const lastShowY = useRef(0);
 
   // Navigation links data
   const navLinks = [
-    { title: "Games", href: "#" },
-    { title: "About", href: "#" },
-    { title: "Contact", href: "#" },
+    { title: "Games", href: "#latest-games", onClick: (e: React.MouseEvent) => { e.preventDefault(); document.getElementById("latest-games")?.scrollIntoView({ behavior: "smooth" }); } },
+    { title: "About", href: "#about", onClick: (e: React.MouseEvent) => { e.preventDefault(); document.getElementById("about")?.scrollIntoView({ behavior: "smooth" }); } },
+    { title: "Contact", href: "#contact", onClick: (e: React.MouseEvent) => { e.preventDefault(); document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" }); } },
   ];
 
   useEffect(() => {
@@ -29,8 +32,32 @@ export const AboutUsSection = (): JSX.Element => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  useEffect(() => {
+    let ticking = false;
+    const threshold = 10;
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const currentScrollY = window.scrollY;
+          if (currentScrollY <= threshold) {
+            setIsVisible(true);
+          } else if (currentScrollY < lastScrollY.current) {
+            setIsVisible(true);
+          } else if (currentScrollY > lastScrollY.current) {
+            setIsVisible(false);
+          }
+          lastScrollY.current = currentScrollY;
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <header className="flex items-center justify-between min-w-0 px-1 sm:px-2 md:px-4 py-2 md:py-3 border-b border-[#e5e8ea] w-full">
+    <header className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between min-w-0 px-1 sm:px-2 md:px-4 py-2 md:py-3 border-b border-[#e5e8ea] w-full transition-transform duration-300 bg-[#112116] ${isVisible ? 'translate-y-0' : '-translate-y-full'}`}>
       {/* Logo and Brand Name */}
       <div className="flex items-center gap-1 md:gap-4">
         <div className="w-4 h-4 relative">
@@ -55,6 +82,7 @@ export const AboutUsSection = (): JSX.Element => {
                 <NavigationMenuLink
                   className="font-['Spline_Sans',Helvetica] font-medium text-white text-xs md:text-sm hover:text-white/80 transition-none"
                   href={link.href}
+                  onClick={link.onClick}
                 >
                   {link.title}
                 </NavigationMenuLink>

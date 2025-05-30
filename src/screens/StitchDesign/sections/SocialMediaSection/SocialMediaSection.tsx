@@ -2,7 +2,7 @@ import React from "react";
 import { Card, CardContent } from "../../../../components/ui/card";
 /// <reference types="vite/client" />
 
-export const SocialMediaSection = (): JSX.Element => {
+export const SocialMediaSection = ({ id }: { id?: string }): JSX.Element => {
   // Data for game cards to enable mapping
   const gameCards = [
     {
@@ -29,9 +29,9 @@ export const SocialMediaSection = (): JSX.Element => {
   ];
 
   return (
-    <section className="w-full">
+    <section id={id} className="w-full">
       <section className="w-full pt-5 pb-3 px-4">
-        <h2 className="[font-family:'Spline_Sans',Helvetica] font-bold text-white text-[22px] leading-7">
+        <h2 id = {"latest-games"} className="[font-family:'Spline_Sans',Helvetica] font-bold text-white text-[22px] leading-7">
           Latest Games
         </h2>
       </section>

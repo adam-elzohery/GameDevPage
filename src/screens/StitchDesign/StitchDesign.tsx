@@ -26,11 +26,11 @@ export const StitchDesign = (): JSX.Element => {
 
           <main className="flex justify-center px-4 md:px-8 lg:px-40 py-5 w-full">
             <div className="flex flex-col max-w-[960px] w-full">
-              <LatestGamesSection />
+              <LatestGamesSection id="games" />
 
-              <SocialMediaSection />
+              <SocialMediaSection id="games" />
 
-              <section className="w-full pt-5 pb-3 px-4">
+              <section id="about" className="w-full pt-5 pb-3 px-4">
                 <h2 className="[font-family:'Spline_Sans',Helvetica] font-bold text-white text-[22px] leading-7">
                   About Us
                 </h2>
@@ -85,7 +85,7 @@ export const StitchDesign = (): JSX.Element => {
 
               <ClientReviewsSection />
 
-              <section className="w-full pt-5 pb-3 px-4">
+              <section id="contact" className="w-full pt-5 pb-3 px-4">
                 <h2 className="[font-family:'Spline_Sans',Helvetica] font-bold text-white text-[22px] leading-7">
                   Contact
                 </h2>
