@@ -24,7 +24,7 @@ export const StitchDesign = (): JSX.Element => {
         <div className="flex flex-col w-full">
           <AboutUsSection />
 
-          <main className="flex justify-center px-4 md:px-8 lg:px-40 py-5 w-full">
+          <main className="flex justify-center px-4 md:px-8 lg:px-40 py-5 w-full pt-12 md:pt-16">
             <div className="flex flex-col max-w-[960px] w-full">
               <LatestGamesSection id="games" />
 
