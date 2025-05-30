@@ -24,7 +24,7 @@ export const StitchDesign = (): JSX.Element => {
         <div className="flex flex-col w-full">
           <AboutUsSection />
 
-          <main className="flex justify-center px-40 py-5 w-full">
+          <main className="flex justify-center px-4 md:px-8 lg:px-40 py-5 w-full">
             <div className="flex flex-col max-w-[960px] w-full">
               <LatestGamesSection />
 
@@ -61,15 +61,18 @@ export const StitchDesign = (): JSX.Element => {
               </section>
 
               <section className="w-full p-4">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
                   {socialMediaImages.map((image) => (
                     <div
                       key={image.id}
-                      className="w-full h-[169px] rounded-xl bg-cover bg-center"
-                      style={{
-                        backgroundImage: `url(${image.backgroundUrl})`,
-                      }}
-                    />
+                      className="w-full aspect-square max-w-[301px] max-h-[301px] mx-auto rounded-xl overflow-hidden bg-[#7da09e] flex items-center justify-center"
+                    >
+                      <img
+                        src={image.backgroundUrl}
+                        alt={"Social Media " + image.id}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
                   ))}
                 </div>
               </section>
@@ -89,7 +92,7 @@ export const StitchDesign = (): JSX.Element => {
               </section>
 
               <div className="flex flex-wrap max-w-[480px] gap-4 px-4 py-3">
-                <div className="flex-1 min-w-40">
+                <div className="flex-1 min-w-[200px]">
                   <Input
                     className="h-14 bg-[#264433] text-[#96c4a8] [font-family:'Spline_Sans',Helvetica] rounded-xl border-0 placeholder:text-[#96c4a8] focus-visible:ring-[#96c4a8] focus-visible:ring-1"
                     placeholder="Your Email"
@@ -98,7 +101,7 @@ export const StitchDesign = (): JSX.Element => {
               </div>
 
               <div className="w-full px-4 py-3">
-                <Button className="w-[84px] h-10 bg-[#38e07a] hover:bg-[#38e07a] text-[#112116] rounded-[20px] [font-family:'Spline_Sans',Helvetica] font-bold text-sm transition-none">
+                <Button className="w-[84px] h-10 bg-[#38e07a] hover:bg-[#38e07a]/90 text-[#112116] rounded-[20px] [font-family:'Spline_Sans',Helvetica] font-bold text-sm transition-none">
                   Submit
                 </Button>
               </div>

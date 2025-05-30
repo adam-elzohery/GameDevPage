@@ -30,15 +30,15 @@ export const ClientReviewsSection = (): JSX.Element => {
 
   return (
     <section className="w-full">
-      <div className="flex flex-wrap gap-3 p-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 p-4">
         {clientReviews.map((review) => (
           <Card
             key={review.id}
-            className="min-w-40 flex-1 rounded-lg bg-transparent border-none"
+            className="rounded-lg bg-transparent border-none"
           >
             <div
-              className="w-full h-[301px] rounded-xl mb-4"
-              style={{ background: `url(${review.imagePath}) 50% 50% / cover` }}
+              className="w-full aspect-square rounded-xl mb-4 bg-cover bg-center"
+              style={{ backgroundImage: `url(${review.imagePath})` }}
             />
             <CardContent className="p-0">
               <h3 className="font-medium text-white text-base leading-6 font-sans">

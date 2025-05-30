@@ -1,6 +1,6 @@
 /// <reference types="vite/client" />
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Avatar } from "../../../../components/ui/avatar";
 import { Button } from "../../../../components/ui/button";
 import {
@@ -9,8 +9,11 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
 } from "../../../../components/ui/navigation-menu";
+import { Menu, X } from "lucide-react";
 
 export const AboutUsSection = (): JSX.Element => {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   // Navigation links data
   const navLinks = [
     { title: "Games", href: "#" },
@@ -18,10 +21,18 @@ export const AboutUsSection = (): JSX.Element => {
     { title: "Contact", href: "#" },
   ];
 
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobileMenuOpen(false);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
-    <header className="flex items-center justify-between px-10 py-3 border-b border-[#e5e8ea] w-full">
+    <header className="flex items-center justify-between min-w-0 px-1 sm:px-2 md:px-4 py-2 md:py-3 border-b border-[#e5e8ea] w-full">
       {/* Logo and Brand Name */}
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-1 md:gap-4">
         <div className="w-4 h-4 relative">
           <img
             className="absolute w-[13px] h-[13px] top-px left-px"
@@ -29,20 +40,20 @@ export const AboutUsSection = (): JSX.Element => {
             src={`${import.meta.env.BASE_URL}vector---0-1.svg`}
           />
         </div>
-        <h1 className="font-bold text-white text-lg font-['Spline_Sans',Helvetica]">
+        <h1 className="font-bold text-white text-xs sm:text-base md:text-lg font-['Spline_Sans',Helvetica]">
           GameDev Studio
         </h1>
       </div>
 
       {/* Navigation and Actions */}
-      <div className="flex items-center justify-end gap-8 flex-1">
-        {/* Navigation Links */}
-        <NavigationMenu>
-          <NavigationMenuList className="flex gap-9">
+      <div className="flex items-center justify-end gap-1 md:gap-8">
+        {/* Desktop Navigation */}
+        <NavigationMenu className="hidden md:block">
+          <NavigationMenuList className="flex gap-6 md:gap-9">
             {navLinks.map((link) => (
               <NavigationMenuItem key={link.title}>
                 <NavigationMenuLink
-                  className="font-['Spline_Sans',Helvetica] font-medium text-white text-sm hover:text-white/80 transition-none"
+                  className="font-['Spline_Sans',Helvetica] font-medium text-white text-xs md:text-sm hover:text-white/80 transition-none"
                   href={link.href}
                 >
                   {link.title}
@@ -53,11 +64,11 @@ export const AboutUsSection = (): JSX.Element => {
         </NavigationMenu>
 
         {/* Action Buttons */}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1 md:gap-2">
           {/* Play Now Button */}
           <Button 
             type="button"
-            className="h-10 px-4 py-0 bg-[#38e07a] hover:bg-[#38e07a] rounded-[20px] font-['Spline_Sans',Helvetica] font-bold text-[#112116] text-sm transition-none"
+            className="h-7 w-auto md:h-10 px-2 md:px-4 py-0 bg-[#38e07a] hover:bg-[#38e07a]/90 rounded-[20px] font-['Spline_Sans',Helvetica] font-bold text-[#112116] text-xs md:text-sm transition-none"
             onClick={() => {}}
           >
             Play Now
@@ -67,7 +78,7 @@ export const AboutUsSection = (): JSX.Element => {
           <Button
             variant="outline"
             size="icon"
-            className="h-10 w-10 bg-[#264433] rounded-[20px] p-2.5 border-0 hover:bg-[#264433] transition-none"
+            className="h-7 w-7 md:h-10 md:w-10 bg-[#264433] rounded-full p-1.5 md:p-2.5 border-0 hover:bg-[#264433] transition-none"
           >
             <div className="w-full h-full" style={{ backgroundImage: `url(${import.meta.env.BASE_URL}vector---0-4.svg)`, backgroundSize: '100% 100%' }} />
           </Button>
@@ -78,12 +89,44 @@ export const AboutUsSection = (): JSX.Element => {
           type="button"
           variant="outline"
           size="icon"
-          className="w-10 h-10 rounded-[20px] border-0 bg-[#264433] hover:bg-[#264433]/90 transition-colors cursor-pointer"
-          onClick={() => {}}
+          className="w-7 h-7 md:w-10 md:h-10 rounded-full border-0 bg-[#264433] hover:bg-[#264433]/90 transition-colors cursor-pointer"
         >
           <div className="w-full h-full" style={{ backgroundImage: `url(${import.meta.env.BASE_URL}depth-4--frame-2.svg)`, backgroundSize: 'cover', backgroundPosition: '50% 50%' }} />
         </Button>
+
+        {/* Mobile Menu Button */}
+        <Button
+          type="button"
+          variant="outline"
+          size="icon"
+          className="md:hidden w-7 h-7 rounded-full border-0 bg-[#264433] hover:bg-[#264433]/90 transition-colors cursor-pointer"
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        >
+          {isMobileMenuOpen ? (
+            <X className="w-4 h-4 md:w-5 md:h-5 text-white" />
+          ) : (
+            <Menu className="w-4 h-4 md:w-5 md:h-5 text-white" />
+          )}
+        </Button>
       </div>
+
+      {/* Mobile Menu */}
+      {isMobileMenuOpen && (
+        <div className="absolute top-[52px] md:top-[60px] left-0 right-0 bg-[#112116] border-b border-[#e5e8ea] md:hidden z-50">
+          <div className="flex flex-col px-3 md:px-4 py-2">
+            {navLinks.map((link) => (
+              <a
+                key={link.title}
+                href={link.href}
+                className="py-2 font-['Spline_Sans',Helvetica] font-medium text-white text-sm hover:text-white/80 transition-none"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                {link.title}
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
     </header>
   );
 };

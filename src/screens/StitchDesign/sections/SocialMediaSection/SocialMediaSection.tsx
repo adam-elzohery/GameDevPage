@@ -30,15 +30,20 @@ export const SocialMediaSection = (): JSX.Element => {
 
   return (
     <section className="w-full">
-      <div className="flex flex-wrap gap-3 p-4">
+      <section className="w-full pt-5 pb-3 px-4">
+        <h2 className="[font-family:'Spline_Sans',Helvetica] font-bold text-white text-[22px] leading-7">
+          Latest Games
+        </h2>
+      </section>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 p-4">
         {gameCards.map((game) => (
           <Card
             key={game.id}
-            className="flex-1 min-w-60 rounded-lg bg-transparent border-0"
+            className="rounded-lg bg-transparent border-0"
           >
             <CardContent className="p-0 flex flex-col gap-4">
               <div
-                className="w-full h-[169px] rounded-xl bg-cover bg-center"
+                className="w-full aspect-[16/9] rounded-xl bg-cover bg-center"
                 style={{ backgroundImage: `url(${game.imageUrl})` }}
               />
               <div className="flex flex-col gap-1">

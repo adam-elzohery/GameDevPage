@@ -18,16 +18,16 @@ export const ContactSection = (): JSX.Element => {
   return (
     <footer className="flex items-start justify-center w-full">
       <div className="flex flex-col max-w-[960px] items-start flex-1">
-        <div className="flex flex-col items-start gap-6 px-5 py-10 w-full">
+        <div className="flex flex-col items-start gap-4 md:gap-6 px-4 md:px-5 py-6 md:py-10 w-full">
           {/* Footer links */}
-          <div className="flex flex-wrap items-center justify-between gap-[24px_24px] w-full">
+          <div className="flex flex-wrap items-center justify-center md:justify-between gap-4 md:gap-[24px] w-full">
             {footerLinks.map((link, index) => (
               <a
                 key={index}
                 href={link.url}
-                className="w-40 flex items-center justify-center"
+                className="w-full md:w-40 flex items-center justify-center"
               >
-                <span className="[font-family:'Spline_Sans',Helvetica] font-normal text-[#96c4a8] text-base text-center leading-6">
+                <span className="[font-family:'Spline_Sans',Helvetica] font-normal text-[#96c4a8] text-sm md:text-base text-center leading-6">
                   {link.text}
                 </span>
               </a>
@@ -49,7 +49,7 @@ export const ContactSection = (): JSX.Element => {
 
           {/* Copyright text */}
           <div className="flex items-center w-full justify-center">
-            <p className="[font-family:'Spline_Sans',Helvetica] font-normal text-[#96c4a8] text-base text-center leading-6">
+            <p className="[font-family:'Spline_Sans',Helvetica] font-normal text-[#96c4a8] text-sm md:text-base text-center leading-6">
               © 2024 GameDev Studio. All rights reserved.
             </p>
           </div>
